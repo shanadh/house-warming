@@ -5,30 +5,31 @@
    ========================================== */
 
 /* Imports */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Inter:wght@300;400;500;600;700&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Inter:wght@300;400;500;600;700&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Great+Vibes&family=Aref+Ruqaa:wght@400;700&display=swap');
 
 /* Variables */
 :root {
-  /* Class A Palette */
-  --color-bg: #FAF8F4;            /* Soft Ivory/Cream background */
-  --color-card-bg: #FFFFFF;       /* Pure White card */
-  --color-emerald: #0F4C3A;       /* Premium Class A Emerald */
-  --color-emerald-glass: rgba(15, 76, 58, 0.98);
+  /* Class A Palette - Emerald & Warm Ivory */
+  --color-bg: #FAF8F4;            /* Warm Ivory background */
+  --color-card-bg: #FFFFFF;       /* Soft White surface/cards */
+  --color-emerald: #0F4C3A;       /* Emerald Green primary */
+  --color-emerald-glass: rgba(15, 76, 58, 0.98); /* Emerald Green glass for dark cards */
   
-  --color-gold: #C6A664;          /* Class A Antique Gold */
-  --color-gold-light: #F0E6D2;    /* Faint sand gold */
-  --color-gold-dark: #A58647;     /* Darker gold accent */
+  --color-gold: #C6A664;          /* Antique Gold accent */
+  --color-gold-light: #ECE7DF;    /* Light Ivory border/divider */
+  --color-gold-dark: #A58647;     /* Darker gold for button hover */
 
   /* Text Colors */
-  --color-text-dark: #2C2C2C;     /* Class A Dark Charcoal text */
+  --color-text-dark: #2C2C2C;     /* Charcoal primary text */
   --color-text-light: #FFFFFF;    /* White text inside emerald cards */
-  --color-text-muted: #666666;    /* Muted charcoal for secondary text */
-  --color-text-emerald-muted: #B2D3C9; /* Soft jade for labels in dark cards */
+  --color-text-muted: #7A7A7A;    /* Warm Gray secondary text */
+  --color-text-emerald-muted: #B2D3C9; /* Soft jade labels in dark cards */
 
   /* Typography Pairing */
   --font-heading: 'Cormorant Garamond', serif;
   --font-body: 'Inter', sans-serif;
   --font-arabic: 'Amiri', serif;
+  --font-bismillah: 'Aref Ruqaa', serif;
 
   /* Layout Spacing */
   --max-width-content: 560px;
@@ -37,7 +38,7 @@
   
   /* Shadows and Borders */
   --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.02);
-  --shadow-emerald: 0 10px 30px rgba(15, 76, 58, 0.12);
+  --shadow-emerald: 0 10px 30px rgba(15, 76, 58, 0.12); /* Emerald green shadow */
   --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.04);
   --border-gold-thin: 1px solid rgba(198, 166, 100, 0.25);
   --border-gold-solid: 1px solid var(--color-gold);
@@ -60,7 +61,7 @@ body {
   font-family: var(--font-body);
   background-color: var(--color-bg);
   /* High-end invitation paper texture default */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10'%3E%3Crect width='10' height='10' fill='%23FAF8F4'/%3E%3Cpath d='M0 0 L10 0 M0 0 L0 10' stroke='%23EFEAE0' stroke-width='0.6' stroke-opacity='0.45' fill='none'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10'%3E%3Crect width='10' height='10' fill='%23FAF8F4'/%3E%3Cpath d='M0 0 L10 0 M0 0 L0 10' stroke='%23ECE7DF' stroke-width='0.6' stroke-opacity='0.45' fill='none'/%3E%3C/svg%3E");
   color: var(--color-text-dark);
   min-height: 100vh;
   position: relative;
@@ -195,13 +196,25 @@ body {
 }
 
 .script-text {
-  font-family: var(--font-heading);
-  font-style: italic;
-  font-size: 2.8rem;
+  font-family: 'Great Vibes', cursive;
+  font-size: 3.4rem;
   color: var(--color-gold);
-  line-height: 1.1;
+  line-height: 1.2;
+  display: block;
+  font-weight: 400;
+}
+
+.greeting-text {
+  font-family: var(--font-heading);
+  font-size: 2.1rem;
+  color: var(--color-gold);
+  line-height: 1.3;
   display: block;
   font-weight: 300;
+  letter-spacing: 0.12em;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
 }
 
 /* 1. Full-Screen Hero Section */
@@ -218,15 +231,26 @@ body {
 }
 
 .bismillah-container {
-  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem 0;
+  margin-bottom: 2.2rem;
 }
 
 .bismillah-arabic {
-  font-family: var(--font-arabic);
-  font-size: 2.4rem;
+  font-family: var(--font-bismillah);
+  font-size: 2.8rem;
   color: var(--color-emerald);
-  margin-bottom: 0.4rem;
-  line-height: 1.2;
+  margin-bottom: 0.6rem;
+  line-height: 1.4;
+  text-align: center;
+  direction: rtl;
+  display: block;
+  letter-spacing: 0;
+  font-weight: 700;
 }
 
 .bismillah-english {
@@ -234,6 +258,9 @@ body {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-text-muted);
+  text-align: center;
+  display: block;
+  line-height: 1.5;
 }
 
 .hero-divider {
@@ -294,7 +321,7 @@ body {
   content: '';
   position: absolute;
   inset: 6px;
-  border: 1px dashed rgba(198, 166, 100, 0.2);
+  border: 1px dashed rgba(191, 160, 106, 0.2);
   border-radius: 10px;
   pointer-events: none;
 }
@@ -310,21 +337,27 @@ body {
 
 .hosts-names {
   font-family: var(--font-heading);
-  font-size: 1.95rem;
-  line-height: 1.45;
+  font-size: 1.8rem;
+  line-height: 1.15;
   font-weight: 300;
   color: var(--color-text-light);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
 }
 
 .and-symbol {
   font-family: var(--font-heading);
   font-style: italic;
-  font-size: 1.8rem;
+  font-size: 1.55rem;
   color: var(--color-gold);
-  display: block;
-  margin: 0.2rem 0;
-  line-height: 0.8;
+  line-height: 1;
+  display: inline-block;
+  margin: 0;
+  text-transform: none;
 }
 
 .scroll-down-hint {
@@ -351,6 +384,47 @@ body {
 @keyframes bounce-down {
   0%, 100% { transform: translateY(0) rotate(45deg); opacity: 0.4; }
   50% { transform: translateY(4px) rotate(45deg); opacity: 1; }
+}
+/* House Image Card Framed Styling */
+.house-image-section {
+  display: flex;
+  justify-content: center;
+}
+
+.house-image-card {
+  background-color: var(--color-emerald-glass);
+  border: var(--border-gold-solid);
+  box-shadow: var(--shadow-emerald);
+  border-radius: 16px;
+  padding: 16px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.house-image-card .card-border-frame {
+  border: 1px dashed rgba(198, 166, 100, 0.35);
+  border-radius: 10px;
+}
+
+.image-wrapper {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  position: relative;
+  z-index: 2;
+}
+
+.house-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: var(--transition-smooth);
+}
+
+.house-image-card:hover .house-img {
+  transform: scale(1.02);
 }
 
 
@@ -567,18 +641,28 @@ body {
   margin-bottom: 0.4rem;
 }
 
-.house-name {
-  color: var(--color-text-light);
-  font-family: var(--font-heading);
-  font-size: 1.65rem;
-  font-weight: 400;
-  margin-bottom: 0.2rem;
+.font-preview {
+  text-align: center;
+  padding: 20px;
 }
 
-.house-sub {
+/* Script Font Styling */
+.main-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3.5rem;
+  font-weight: 400;
+  margin-bottom: 5px;
   color: var(--color-gold);
-  font-size: 0.9rem;
-  font-weight: 500;
+}
+
+/* Serif Italic Font Styling */
+.subtitle {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  margin-top: 0;
+  letter-spacing: 2px;
+  color: var(--color-gold);
 }
 
 .horizontal-gold-divider {
@@ -808,7 +892,7 @@ body {
 
 .footer-barakah {
   font-family: var(--font-arabic);
-  font-size: 1.95rem;
+  font-size: 1.55rem;
   color: var(--color-emerald);
   margin-bottom: 0.4rem;
   line-height: 1.3;
@@ -853,7 +937,7 @@ body {
 @media (max-width: 480px) {
   :root {
     /* Softer texture on mobile */
-    --bg-paper-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12'%3E%3Crect width='12' height='12' fill='%23FAF8F4'/%3E%3Cpath d='M0 0 L12 0 M0 0 L0 12' stroke='%23EFEAE0' stroke-width='0.5' stroke-opacity='0.35' fill='none'/%3E%3C/svg%3E");
+    --bg-paper-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12'%3E%3Crect width='12' height='12' fill='%23FAF8F4'/%3E%3Cpath d='M0 0 L12 0 M0 0 L0 12' stroke='%23ECE7DF' stroke-width='0.5' stroke-opacity='0.35' fill='none'/%3E%3C/svg%3E");
   }
 
   .invitation-wrapper {
@@ -898,6 +982,6 @@ body {
 /* Retina Display High-Pixel Resolution Override */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   :root {
-    --bg-paper-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10'%3E%3Crect width='10' height='10' fill='%23FAF8F4'/%3E%3Cpath d='M0 0 L10 0 M0 0 L0 10' stroke='%23EFEAE0' stroke-width='0.4' stroke-opacity='0.4' fill='none'/%3E%3C/svg%3E");
+    --bg-paper-texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10'%3E%3Crect width='10' height='10' fill='%23FAF8F4'/%3E%3Cpath d='M0 0 L10 0 M0 0 L0 10' stroke='%23ECE7DF' stroke-width='0.4' stroke-opacity='0.4' fill='none'/%3E%3C/svg%3E");
   }
 }
