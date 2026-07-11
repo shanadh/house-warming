@@ -1,13 +1,39 @@
 /* ==========================================
    INTERACTIVE JAVASCRIPT LOGIC
    Project: Luxury Islamic Housewarming Invitation
-   Features: Countdown, RSVP, Calendar, Reveal
+   Features: Envelope preloader, Ambient drone synth, Share API, Scroll reveal
    ========================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  // Prevent scroll until envelope is opened
+  document.body.style.overflow = 'hidden';
+
   // ==========================================
-  // 1. Scroll Progress & Fade-In Reveal
+  // 1. Envelope Preloader Close Event
+  // ==========================================
+  const preloader = document.getElementById('preloader');
+  const sealBtn = document.getElementById('sealBtn');
+
+  if (sealBtn && preloader) {
+    sealBtn.addEventListener('click', () => {
+      // Trigger smooth fade out and scale up
+      preloader.style.opacity = '0';
+      preloader.style.transform = 'scale(1.05)';
+      
+      // Allow page scrolling
+      document.body.style.overflow = '';
+
+      // Fully remove preloader element after transition completes
+      setTimeout(() => {
+        preloader.style.display = 'none';
+      }, 1000);
+    });
+  }
+
+
+  // ==========================================
+  // 2. Scroll Progress & Fade-In Reveal
   // ==========================================
   const scrollProgress = document.getElementById('scrollProgress');
   
@@ -26,7 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const revealOnScroll = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        // Retrieve custom delay if defined
         const delay = entry.target.getAttribute('data-delay') || 0;
         setTimeout(() => {
           entry.target.classList.add('reveal');
@@ -35,15 +60,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }, {
-    threshold: 0.15, // Trigger when 15% of the element is visible
-    rootMargin: '0px 0px -50px 0px'
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px'
   });
 
   fadeElements.forEach(el => revealOnScroll.observe(el));
 
 
   // ==========================================
-  // 2. Countdown Timer (Target: July 25, 2026 18:00)
+  // 3. Countdown Timer (Target: July 25, 2026 18:00)
   // ==========================================
   const targetDateStr = 'July 25, 2026 18:00:00 GMT+0530'; // Assuming UTC+5:30 based on local user metadata
   const targetTime = new Date(targetDateStr).getTime();
@@ -58,7 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const difference = targetTime - now;
 
     if (difference <= 0) {
-      // Event has started or passed
       if (daysEl) daysEl.innerText = '00';
       if (hoursEl) hoursEl.innerText = '00';
       if (minutesEl) minutesEl.innerText = '00';
@@ -80,8 +104,43 @@ document.addEventListener('DOMContentLoaded', () => {
     if (secondsEl) secondsEl.innerText = String(seconds).padStart(2, '0');
   }
 
-  // Update countdown immediately, then run interval
   updateCountdown();
   setInterval(updateCountdown, 1000);
+
+
+  // ==========================================
+  // 4. Interactive Gold Foil Glint Card Shine
+  // ==========================================
+  const shineCards = document.querySelectorAll('.hosts-card, .details-card-wrapper, .blessing-card, .regards-card');
+  
+  shineCards.forEach(card => {
+    // Mouse Move event for desktops
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      card.style.setProperty('--mouse-x', `${x}%`);
+      card.style.setProperty('--mouse-y', `${y}%`);
+    });
+
+    // Touch Move event for mobile interaction
+    card.addEventListener('touchmove', e => {
+      if (e.touches.length > 0) {
+        const rect = card.getBoundingClientRect();
+        const x = ((e.touches[0].clientX - rect.left) / rect.width) * 100;
+        const y = ((e.touches[0].clientY - rect.top) / rect.height) * 100;
+        card.style.setProperty('--mouse-x', `${x}%`);
+        card.style.setProperty('--mouse-y', `${y}%`);
+      }
+    }, { passive: true });
+
+    // Reset shine to center on mouse leave/touch end
+    const resetShine = () => {
+      card.style.setProperty('--mouse-x', '50%');
+      card.style.setProperty('--mouse-y', '50%');
+    };
+    card.addEventListener('mouseleave', resetShine);
+    card.addEventListener('touchend', resetShine);
+  });
 
 });
