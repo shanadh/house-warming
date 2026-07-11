@@ -238,6 +238,7 @@ body {
   width: 100%;
   padding: 1rem 0;
   margin-bottom: 2.2rem;
+  position: relative;
 }
 
 .bismillah-arabic {
@@ -384,47 +385,6 @@ body {
 @keyframes bounce-down {
   0%, 100% { transform: translateY(0) rotate(45deg); opacity: 0.4; }
   50% { transform: translateY(4px) rotate(45deg); opacity: 1; }
-}
-/* House Image Card Framed Styling */
-.house-image-section {
-  display: flex;
-  justify-content: center;
-}
-
-.house-image-card {
-  background-color: var(--color-emerald-glass);
-  border: var(--border-gold-solid);
-  box-shadow: var(--shadow-emerald);
-  border-radius: 16px;
-  padding: 16px;
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-}
-
-.house-image-card .card-border-frame {
-  border: 1px dashed rgba(198, 166, 100, 0.35);
-  border-radius: 10px;
-}
-
-.image-wrapper {
-  width: 100%;
-  overflow: hidden;
-  border-radius: 10px;
-  position: relative;
-  z-index: 2;
-}
-
-.house-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-  transition: var(--transition-smooth);
-}
-
-.house-image-card:hover .house-img {
-  transform: scale(1.02);
 }
 
 
@@ -1030,6 +990,119 @@ body {
   50% { transform: translateY(-40px) rotate(180deg); opacity: 0.55; }
   85% { opacity: 0.2; }
   100% { transform: translateY(-80px) rotate(360deg); opacity: 0; }
+}
+/* Envelope Preloader Overlay */
+.envelope-preloader {
+  position: fixed;
+  inset: 0;
+  background-color: var(--color-bg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10'%3E%3Crect width='10' height='10' fill='%23FAF8F4'/%3E%3Cpath d='M0 0 L10 0 M0 0 L0 10' stroke='%23ECE7DF' stroke-width='0.6' stroke-opacity='0.45' fill='none'/%3E%3C/svg%3E");
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 1rem;
+}
+
+.envelope-wrapper {
+  position: relative;
+  width: 90%;
+  max-width: 420px;
+  height: 280px;
+  background-color: var(--color-card-bg);
+  border: var(--border-gold-solid);
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.envelope-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px dashed rgba(198, 166, 100, 0.35);
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+.envelope-paper-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  padding: 2rem;
+  z-index: 3;
+}
+
+.envelope-seal {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background-color: var(--color-gold);
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(198, 166, 100, 0.3);
+  transition: var(--transition-smooth);
+}
+
+.envelope-seal:hover {
+  transform: scale(1.08);
+  background-color: var(--color-gold-dark);
+  box-shadow: 0 8px 24px rgba(198, 166, 100, 0.45);
+}
+
+.seal-star {
+  font-size: 1.45rem;
+  line-height: 1;
+  margin-bottom: 0.1rem;
+}
+
+.seal-instruction {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+
+/* Modern Islamic Architectural Arch overrides (Mihrab Layout) */
+.details-card-wrapper {
+  border-radius: 200px 200px 16px 16px !important;
+}
+
+.details-card-wrapper .card-border-frame {
+  border-radius: 190px 190px 10px 10px !important;
+}
+
+.details-card-wrapper .card-border-frame::before {
+  display: none !important; /* Hide micro curve loops on arched top so it doesn't conflict */
+}
+
+/* Interactive Gold Foil Glint Card Shine */
+.hosts-card, .details-card-wrapper {
+  background: radial-gradient(
+    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(198, 166, 100, 0.16) 0%,
+    rgba(198, 166, 100, 0) 50%
+  ), var(--color-emerald-glass);
+}
+
+.blessing-card, .regards-card {
+  background: radial-gradient(
+    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(198, 166, 100, 0.08) 0%,
+    rgba(198, 166, 100, 0) 65%
+  ), var(--color-card-bg);
 }
 
 
